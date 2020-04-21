@@ -2,6 +2,7 @@ package net.greet;
 
 
 import net.greet.database.DatabaseService;
+import net.greet.database.SQLQueries;
 import net.greet.models.Greeting;
 import net.greet.utilities.Commands;
 import net.greet.utilities.Greeter;
@@ -14,8 +15,8 @@ public class Main {
 
     public static void main(String[] args) throws SQLException {
         Connection db = DriverManager.getConnection("jdbc:h2:file:./target/greetings_app_db", "sa", "");
-
-        DatabaseService greetDatabase = new DatabaseService(db);
+        SQLQueries queries = new SQLQueries(db);
+        DatabaseService greetDatabase = new DatabaseService(queries);
         Scanner keyboard = new Scanner(System.in);
         Greeter greeterObject = new Greeter();
         Commands commands = new Commands(greeterObject, greetDatabase);
