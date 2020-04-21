@@ -7,13 +7,13 @@ import java.sql.*;
 
 public class DatabaseService implements DatabaseInterface {
 
-    private Connection connection;
-    public SQLQueries queries;
+    SQLQueries queries;
 
-    public DatabaseService(Connection connection) throws SQLException {
-        this.connection = connection;
-        this.queries = new SQLQueries(connection);
+    public DatabaseService( SQLQueries queries ) {
+
+        this.queries = queries;
     }
+
 
     @Override
     public  boolean greetUser( String name ) {
