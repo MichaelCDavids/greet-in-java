@@ -6,72 +6,88 @@ import java.sql.SQLException;
 
 public class SQLQueries {
 
+    private Connection connection;
 
-    //create
-    private final String CREATE_USER_SQL = "INSERT INTO USERS (NAME,COUNT) VALUES (?,?)";
     private PreparedStatement createUser;
-
-    // read
-    private final String GET_USER_TOTAL_SQL = "SELECT * FROM USERS";
     private PreparedStatement totalCount;
-
-    private final String GET_USER_SQL = "SELECT 1 FROM USERS WHERE NAME = ?";
     private PreparedStatement findUser;
-
-    private final String GET_USER_GREETED_COUNT = "SELECT COUNT FROM USERS WHERE NAME = ?";
     private PreparedStatement userGreetedTotal;
-
-    // update
-    private final String UPDATE_COUNTER_SQL = "UPDATE USERS SET COUNT = ? WHERE NAME = ?";
     private PreparedStatement updateCounter;
-
-    // delete
-    private final String CLEAR_USER_SQL = "DELETE FROM USERS WHERE NAME = ?";
     private PreparedStatement clearUser;
-
-    private final String CLEAR_ALL_USERS_SQL = "DELETE FROM USERS";
     private PreparedStatement clearAllUsers;
 
-    public SQLQueries(Connection dbConnection) {
-        try{
-            this.findUser = dbConnection.prepareStatement(GET_USER_SQL);
-            this.userGreetedTotal = dbConnection.prepareStatement(GET_USER_GREETED_COUNT);
-            this.createUser = dbConnection.prepareStatement(CREATE_USER_SQL);
-            this.updateCounter =  dbConnection.prepareStatement(UPDATE_COUNTER_SQL);
-            this.totalCount = dbConnection.prepareStatement(GET_USER_TOTAL_SQL);
-            this.clearUser = dbConnection.prepareStatement(CLEAR_USER_SQL);
-            this.clearAllUsers =  dbConnection.prepareStatement(CLEAR_ALL_USERS_SQL);
+    public SQLQueries(Connection dbConnection){
+        this.connection = dbConnection;
+    }
+
+    PreparedStatement getFindUser() {
+        try {
+            final String GET_USER_SQL = "SELECT 1 FROM USERS WHERE NAME = ?";
+            this.findUser = this.connection.prepareStatement(GET_USER_SQL);
         }catch (SQLException e){
             e.printStackTrace();
         }
-    }
-
-
-    PreparedStatement getFindUser() {
         return findUser;
     }
 
     PreparedStatement getCreateUser() {
+        try{
+            final String CREATE_USER_SQL = "INSERT INTO USERS (NAME,COUNT) VALUES (?,?)";
+            this.createUser = this.connection.prepareStatement(CREATE_USER_SQL);
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
         return createUser;
     }
 
     PreparedStatement getUpdateCounter() {
+        try {
+            final String UPDATE_COUNTER_SQL = "UPDATE USERS SET COUNT = ? WHERE NAME = ?";
+            this.updateCounter =  this.connection.prepareStatement(UPDATE_COUNTER_SQL);
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
         return updateCounter;
     }
 
     PreparedStatement getTotalCount() {
+        try {
+            final String GET_USER_TOTAL_SQL = "SELECT * FROM USERS";
+
+            this.totalCount = this.connection.prepareStatement(GET_USER_TOTAL_SQL);
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
         return totalCount;
     }
 
     PreparedStatement getClearUser() {
+        try {
+            final String CLEAR_USER_SQL = "DELETE FROM USERS WHERE NAME = ?";
+            this.clearUser = this.connection.prepareStatement(CLEAR_USER_SQL);
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
         return clearUser;
     }
 
     PreparedStatement getClearAllUsers() {
+        try {
+            final String CLEAR_ALL_USERS_SQL = "DELETE FROM USERS";
+            this.clearAllUsers =  this.connection.prepareStatement(CLEAR_ALL_USERS_SQL);
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
         return clearAllUsers;
     }
 
     PreparedStatement getUserGreetedTotal() {
+        try{
+            final String GET_USER_GREETED_COUNT = "SELECT COUNT FROM USERS WHERE NAME = ?";
+            this.userGreetedTotal = this.connection.prepareStatement(GET_USER_GREETED_COUNT);
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
         return userGreetedTotal;
     }
 }
