@@ -25,8 +25,9 @@ public class Processor {
             }else{
                 return new Greeting(commands.get(userInput.getCommandType().name().toLowerCase()).executeCommand(userInput),true);
             }
+        }else{
+            return new Greeting("\nEnter one of these valid commands below:\n\tgreet [name]  - greets user in English\n\tgreeted [name] - number of times a user was greeted\n\tgreeted [optional] - number of users greeted\n\tclear [name] - clears user from database\n\tclear [optional] - removes all users from database\n\thelp - shows list of available commands",true);
         }
-        return new Greeting("could not process your request, try again",true);
     }
 
 

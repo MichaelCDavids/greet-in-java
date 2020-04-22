@@ -46,4 +46,7 @@ public class Input {
         }
         return CommandType.HELP;
     }
+    protected int getArgumentsLength(){
+        return this.arguments.length;
+    }
 }

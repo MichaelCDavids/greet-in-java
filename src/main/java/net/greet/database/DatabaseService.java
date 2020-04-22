@@ -1,8 +1,6 @@
 package net.greet.database;
 
-
 import net.greet.interfaces.DatabaseInterface;
-
 import java.sql.*;
 
 public class DatabaseService implements DatabaseInterface {
@@ -10,30 +8,34 @@ public class DatabaseService implements DatabaseInterface {
     SQLQueries queries;
 
     public DatabaseService( SQLQueries queries ) {
-
         this.queries = queries;
     }
-
 
     @Override
     public  boolean greetUser( String name ) {
         if (userExists(name)){
             return updateGreetCount(name);
-        }else{
-            createUser(name);
+        }else if(!userExists(name)){
+            if(name!= "" | name.length() < 3){
+                return createUser(name);
+            }else{
+                return false;
+            }
+        } else {
+            return false;
         }
-        return false;
     }
 
     @Override
     public  int userGreeted( String name ) {
         try {
-            PreparedStatement p = queries.getUserGreetedTotal();
-            p.setString(1,name);
-            ResultSet set = p.executeQuery();
-            while (set.next()){
-                System.out.println(set.getInt("COUNT"));
-                return set.getInt("COUNT");
+            if(userExists(name)){
+                PreparedStatement p = queries.getUserGreetedTotal();
+                p.setString(1,name);
+                ResultSet set = p.executeQuery();
+                while (set.next()){
+                    return set.getInt("COUNT");
+                }
             }
         }catch (SQLException e){
             e.printStackTrace();
@@ -52,7 +54,6 @@ public class DatabaseService implements DatabaseInterface {
         }catch (SQLException e) {
             e.printStackTrace();
         }
-
         return false;
     }
 
@@ -62,7 +63,6 @@ public class DatabaseService implements DatabaseInterface {
             PreparedStatement p = queries.getTotalCount();
             ResultSet set = p.executeQuery();
             set.last();
-            System.out.println(set.getRow());
             return set.getRow();
 
         }catch (SQLException e){
@@ -119,7 +119,6 @@ public class DatabaseService implements DatabaseInterface {
             while (set.next()){
                 int userGreetCounter = set.getInt("COUNT") + 1;
                 PreparedStatement p2 = queries.getUpdateCounter();
-                System.out.println(userGreetCounter);
                 p2.setInt(1, userGreetCounter);
                 p2.setString(2, name);
                 if (p2.executeUpdate() > 0){
@@ -132,5 +131,4 @@ public class DatabaseService implements DatabaseInterface {
 
         return false;
     }
-
 }

@@ -12,17 +12,16 @@ public class Commands {
     private Greeter greeterObject;
     private DatabaseService greetDatabase;
 
-    private Map<String, CommandInterface> availableCommands;
+    private Map<String, CommandInterface> availableCommands = new HashMap<>();;
 
 
     public Commands( Greeter greeterObject, DatabaseService databaseApp){
         this.greetDatabase = databaseApp;
         this.greeterObject = greeterObject;
-        availableCommands = new HashMap<>();
         initializeCommands();
     }
 
-    void initializeCommands(){
+    private void initializeCommands(){
         getAvailableCommands().put("greet",new Greet(greeterObject, greetDatabase));
         getAvailableCommands().put("greeted",new Count(greetDatabase));
         getAvailableCommands().put("clear",new Clear(greetDatabase));

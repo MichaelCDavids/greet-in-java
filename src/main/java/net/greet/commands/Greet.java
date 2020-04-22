@@ -18,7 +18,7 @@ public class Greet implements CommandInterface {
 
     public String executeCommand(Input input) {
         if (input.getEnteredName() == null) {
-            return "Enter name: $greet [name]";
+            return "use command $greet [name]";
         }
         db.greetUser(input.getEnteredName());
         return greeterObject.greet(input.getEnteredName(), input.getEnteredLanguage());
