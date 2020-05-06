@@ -1,7 +1,11 @@
 package net.greet.database;
 
 import net.greet.interfaces.DatabaseInterface;
+import net.greet.theme.ConsoleColors;
+
 import java.sql.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class DatabaseService implements DatabaseInterface {
 
@@ -18,9 +22,9 @@ public class DatabaseService implements DatabaseInterface {
         }else if(!userExists(name)){
             if(name!= "" | name.length() < 3){
                 return createUser(name);
-            }else{
-                return false;
             }
+            return false;
+
         } else {
             return false;
         }
@@ -62,13 +66,34 @@ public class DatabaseService implements DatabaseInterface {
         try {
             PreparedStatement p = queries.getTotalCount();
             ResultSet set = p.executeQuery();
-            set.last();
-            return set.getRow();
+            Map<String, Integer> userMap = new HashMap<>();
+            while(set.next()){
+                userMap.put(set.getString(2),set.getInt(3));
+            }
+            return userMap.size();
 
         }catch (SQLException e){
             e.printStackTrace();
         }
         return 0;
+    }
+
+    @Override
+    public String usersGreeted() {
+        try {
+            PreparedStatement p = queries.getTotalCount();
+            ResultSet set = p.executeQuery();
+            Map<String, Integer> userMap = new HashMap<>();
+            System.out.println("\nList of greeted users:\n");
+            while(set.next()){
+                System.out.println(ConsoleColors.PURPLE_BOLD+set.getString(2)+" was greeted "+set.getInt(3)+" time(s)");
+            }
+            return "";
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return "";
     }
 
     @Override

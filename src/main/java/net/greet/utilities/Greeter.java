@@ -12,6 +12,15 @@ public class Greeter{
                 return "Goeie dag, "+userName;
             case XHOSA:
                 return "Mholo, "+userName;
+            case ARABIC:
+                return userName+",مرحبا،";
+            case FRENCH:
+                return "Bonjour, "+userName;
+            case ITALIAN:
+                return "Ciao, "+userName;
+            case GERMAN:
+            case DUTCH:
+                return "Hallo, "+userName;
             default:
                 return "Hi";
         }

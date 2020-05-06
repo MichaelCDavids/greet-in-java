@@ -6,4 +6,5 @@ public interface DatabaseInterface {
     boolean clearUser(String userName);
     int greetCount();
     boolean clearAll();
+    String usersGreeted();
 }
