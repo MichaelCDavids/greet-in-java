@@ -1,48 +1,48 @@
-2020-05-06 21:48:33 jdbc[4]: exception
+2020-05-06 22:50:28 jdbc[4]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found; SQL statement:
 SELECT 1 FROM USERS WHERE NAME = ? [42102-199]
-2020-05-06 21:48:33 jdbc[5]: exception
+2020-05-06 22:50:28 jdbc[5]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found; SQL statement:
 SELECT 1 FROM USERS WHERE NAME = ? [42102-199]
-2020-05-06 21:48:33 jdbc[6]: exception
+2020-05-06 22:50:28 jdbc[6]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found; SQL statement:
 UPDATE USERS SET COUNT = ? WHERE NAME = ? [42102-199]
-2020-05-06 21:48:33 jdbc[7]: exception
+2020-05-06 22:50:28 jdbc[7]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found; SQL statement:
 DELETE FROM USERS [42102-199]
-2020-05-06 21:48:33 jdbc[8]: exception
+2020-05-06 22:50:28 jdbc[8]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found; SQL statement:
 SELECT 1 FROM USERS WHERE NAME = ? [42102-199]
-2020-05-06 21:48:33 jdbc[9]: exception
+2020-05-06 22:50:28 jdbc[9]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found; SQL statement:
 SELECT * FROM USERS [42102-199]
-2020-05-06 21:48:34 jdbc[10]: exception
+2020-05-06 22:50:28 jdbc[10]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found; SQL statement:
 DELETE FROM USERS WHERE NAME = ? [42102-199]
-2020-05-06 21:48:34 jdbc[11]: exception
+2020-05-06 22:50:28 jdbc[11]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found; SQL statement:
 INSERT INTO USERS (NAME,COUNT) VALUES (?,?) [42102-199]
-2020-05-06 21:48:34 jdbc[13]: exception
+2020-05-06 22:50:28 jdbc[13]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found; SQL statement:
 SELECT COUNT FROM USERS WHERE NAME = ? [42102-199]
-2020-05-06 21:48:34 jdbc[14]: exception
+2020-05-06 22:50:28 jdbc[14]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found; SQL statement:
 DELETE FROM USERS [42102-199]
-2020-05-06 21:48:34 jdbc[15]: exception
+2020-05-06 22:50:28 jdbc[15]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found; SQL statement:
 DELETE FROM USERS [42102-199]
-2020-05-06 21:48:34 jdbc[16]: exception
+2020-05-06 22:50:28 jdbc[16]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found; SQL statement:
 DELETE FROM USERS [42102-199]
-2020-05-06 21:48:34 jdbc[17]: exception
+2020-05-06 22:50:28 jdbc[17]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found; SQL statement:
 DELETE FROM USERS [42102-199]
-2020-05-06 21:48:34 jdbc[18]: exception
+2020-05-06 22:50:28 jdbc[18]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found; SQL statement:
 DELETE FROM USERS [42102-199]
-2020-05-06 21:48:34 jdbc[19]: exception
+2020-05-06 22:50:28 jdbc[19]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found; SQL statement:
 DELETE FROM USERS [42102-199]
-2020-05-06 21:48:34 jdbc[25]: exception
+2020-05-06 22:50:28 jdbc[25]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found; SQL statement:
 SELECT 1 FROM USERS WHERE NAME = ? [42102-199]
