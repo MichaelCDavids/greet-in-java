@@ -4,6 +4,7 @@ import net.greet.commands.*;
 import net.greet.database.DatabaseService;
 import net.greet.database.SQLQueries;
 import net.greet.interfaces.CommandInterface;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.sql.Connection;
@@ -16,19 +17,24 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CommandsTest {
+    Connection db;
+
+    @BeforeEach
+    void setup() throws SQLException {
+        db = DriverManager.getConnection("jdbc:h2:file:./target/greetings_app_db", "sa", "");
+    }
+
     @Test
     void testCommandsConstructor() throws SQLException {
-        Connection db = DriverManager.getConnection("jdbc:h2:file:./target/greetings_app_db", "sa", "");
         Greeter g = new Greeter();
         SQLQueries s = new SQLQueries(db);
         DatabaseService ds = new DatabaseService(s);
         Commands c = new Commands(g,ds);
-        assertEquals(5, c.getAvailableCommands().size());
+        assertEquals(6, c.getAvailableCommands().size());
     }
 
     @Test
     void testGetAvailableCommands() throws SQLException {
-        Connection db = DriverManager.getConnection("jdbc:h2:file:./target/greetings_app_db", "sa", "");
         Greeter g = new Greeter();
         SQLQueries s = new SQLQueries(db);
         DatabaseService ds = new DatabaseService(s);
@@ -39,12 +45,11 @@ public class CommandsTest {
 
     @Test
     void testGetAvailableCommandsSize() throws SQLException {
-        Connection db = DriverManager.getConnection("jdbc:h2:file:./target/greetings_app_db", "sa", "");
         Greeter g = new Greeter();
         SQLQueries s = new SQLQueries(db);
         DatabaseService ds = new DatabaseService(s);
         Commands c = new Commands(g,ds);
         Map<String, CommandInterface> m = new HashMap<>();
-        assertEquals(5,c.getAvailableCommands().size());
+        assertEquals(6,c.getAvailableCommands().size());
     }
 }

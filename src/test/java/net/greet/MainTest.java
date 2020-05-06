@@ -6,6 +6,7 @@ import net.greet.models.Greeting;
 import net.greet.utilities.Commands;
 import net.greet.utilities.Greeter;
 import net.greet.utilities.Processor;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.sql.Connection;
@@ -17,34 +18,36 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class MainTest {
 
+    Connection db;
+    SQLQueries s;
+    Greeter g;
+    DatabaseService ds;
+
+    @BeforeEach
+    void setup() throws SQLException{
+         g = new Greeter();
+         db = DriverManager.getConnection("jdbc:h2:file:./target/greetings_app_db", "sa", "");
+         s = new SQLQueries(db);
+         ds = new DatabaseService(s);
+    }
+
     @Test
-    void testMainClass() throws SQLException {
-        Connection db = DriverManager.getConnection("jdbc:h2:file:./target/greetings_app_db", "sa", "");
-        Greeter g = new Greeter();
-        SQLQueries s = new SQLQueries(db);
-        DatabaseService ds = new DatabaseService(s);
+    void testMainClass(){
+
         Commands c = new Commands(g,ds);
         Processor p = new Processor(c.getAvailableCommands());
         Greeting gp = p.processInput("greet Michael English");
         assertEquals("Hello, Michael",gp.getMessage());
     }
     @Test
-    void testMainClassPrompt() throws SQLException {
-        Connection db = DriverManager.getConnection("jdbc:h2:file:./target/greetings_app_db", "sa", "");
-        Greeter g = new Greeter();
-        SQLQueries s = new SQLQueries(db);
-        DatabaseService ds = new DatabaseService(s);
+    void testMainClassPrompt(){
         Commands c = new Commands(g,ds);
         Processor p = new Processor(c.getAvailableCommands());
         Greeting gp = p.processInput("greet Michael English");
         assertEquals(true,gp.showPrompt());
     }
     @Test
-    void testMainClassPromptExit() throws SQLException {
-        Connection db = DriverManager.getConnection("jdbc:h2:file:./target/greetings_app_db", "sa", "");
-        Greeter g = new Greeter();
-        SQLQueries s = new SQLQueries(db);
-        DatabaseService ds = new DatabaseService(s);
+    void testMainClassPromptExit() {
         Commands c = new Commands(g,ds);
         Processor p = new Processor(c.getAvailableCommands());
         Greeting gp = p.processInput("exit");

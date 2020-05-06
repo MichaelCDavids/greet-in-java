@@ -14,11 +14,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class DatabaseServiceTest {
 
     final String  CONNECTION_URL = "jdbc:h2:file:./target/greetings_app_db";
+    Connection db;
 
     @BeforeEach
     void clearUsersTable() throws SQLException {
-        Connection db = DriverManager.getConnection(CONNECTION_URL, "sa", "");
-        Greeter g = new Greeter();
+        db = DriverManager.getConnection(CONNECTION_URL, "sa", "");
         SQLQueries s = new SQLQueries(db);
         DatabaseService ds = new DatabaseService(s);
         ds.clearAll();
@@ -26,8 +26,6 @@ public class DatabaseServiceTest {
 
     @Test
     void testDatabaseServicesConstructor() throws SQLException {
-        Connection db = DriverManager.getConnection(CONNECTION_URL, "sa", "");
-        Greeter g = new Greeter();
         SQLQueries s = new SQLQueries(db);
         DatabaseService ds = new DatabaseService(s);
         assertTrue(ds instanceof DatabaseService);
@@ -35,16 +33,12 @@ public class DatabaseServiceTest {
 
     @Test
     void testDatabaseServicesGreetUser() throws SQLException {
-        Connection db = DriverManager.getConnection(CONNECTION_URL, "sa", "");
-        Greeter g = new Greeter();
         SQLQueries s = new SQLQueries(db);
         DatabaseService ds = new DatabaseService(s);
         assertTrue(ds.greetUser("Michael"));
     }
     @Test
     void testDatabaseServiceUserGreeted() throws SQLException {
-        Connection db = DriverManager.getConnection(CONNECTION_URL, "sa", "");
-        Greeter g = new Greeter();
         SQLQueries s = new SQLQueries(db);
         DatabaseService ds = new DatabaseService(s);
         ds.greetUser("Michael");
@@ -52,8 +46,6 @@ public class DatabaseServiceTest {
     }
     @Test
     void testDatabaseServiceClearUser() throws SQLException {
-        Connection db = DriverManager.getConnection(CONNECTION_URL, "sa", "");
-        Greeter g = new Greeter();
         SQLQueries s = new SQLQueries(db);
         DatabaseService ds = new DatabaseService(s);
         ds.greetUser("Michael");
@@ -62,8 +54,6 @@ public class DatabaseServiceTest {
     }
     @Test
     void testDatabaseServiceGreetCount() throws SQLException {
-        Connection db = DriverManager.getConnection(CONNECTION_URL, "sa", "");
-        Greeter g = new Greeter();
         SQLQueries s = new SQLQueries(db);
         DatabaseService ds = new DatabaseService(s);
         ds.greetUser("Daiyaan");
@@ -80,7 +70,6 @@ public class DatabaseServiceTest {
 
     @Test
     void testDatabaseServiceClearAll() throws SQLException {
-        Connection db = DriverManager.getConnection(CONNECTION_URL, "sa", "");
         SQLQueries s = new SQLQueries(db);
         DatabaseService ds = new DatabaseService(s);
         ds.greetUser("Michael");
