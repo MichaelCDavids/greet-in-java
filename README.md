@@ -9,12 +9,8 @@
  To test run
     
     mvn test
-    
- To generate jar files 
-    
-    mvn build
- 
- To generate package 
+     
+ To generate build files 
      
      mvn package
      
