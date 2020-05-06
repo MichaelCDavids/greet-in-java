@@ -1,13 +1,15 @@
+net/greet/theme/ConsoleColors.class
 net/greet/utilities/Greeter$1.class
 net/greet/commands/Exit.class
+net/greet/commands/Greeted.class
 net/greet/interfaces/CommandInterface.class
 net/greet/Main.class
 net/greet/utilities/Commands.class
 net/greet/commands/Clear.class
 net/greet/enumerators/LanguageType.class
-net/greet/commands/Count.class
 net/greet/database/SQLQueries.class
 net/greet/utilities/Processor.class
+net/greet/commands/Counter.class
 net/greet/models/Greeting.class
 net/greet/input/Input.class
 net/greet/database/DatabaseService.class
