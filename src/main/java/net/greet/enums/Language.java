@@ -1,6 +1,6 @@
-package net.greet.enumerators;
+package net.greet.enums;
 
-public enum LanguageType {
+public enum Language {
     ENGLISH,
     AFRIKAANS,
     XHOSA,

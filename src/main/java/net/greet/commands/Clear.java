@@ -1,14 +1,14 @@
 package net.greet.commands;
 
-import net.greet.database.DatabaseService;
+import net.greet.database.Service;
 import net.greet.input.Input;
-import net.greet.interfaces.CommandInterface;
+import net.greet.Command;
 
-public  class Clear implements CommandInterface {
+public  class Clear implements Command {
 
-    private DatabaseService db;
+    private Service db;
 
-    public Clear( DatabaseService database){
+    public Clear( Service database){
         this.db = database;
     }
 
@@ -19,7 +19,7 @@ public  class Clear implements CommandInterface {
             return "cleared database";
         } else if(input.getEnteredName() != null){
             if (db.clearUser(input.getEnteredName())){
-                return input.getEnteredName().concat("  removed from database");
+                return input.getEnteredName().concat(" removed from database");
             }
             return "could not clear database for ".concat(input.getEnteredName());
         } else{

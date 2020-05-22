@@ -1,16 +1,15 @@
 package net.greet.commands;
 
 
-import net.greet.database.DatabaseService;
-import net.greet.enumerators.CommandType;
+import net.greet.database.Service;
 import net.greet.input.Input;
-import net.greet.interfaces.CommandInterface;
+import net.greet.Command;
 
-public class Counter implements CommandInterface {
+public class Counter implements Command {
 
-    private DatabaseService db;
+    private Service db;
 
-    public Counter(DatabaseService db){
+    public Counter( Service db){
         this.db = db;
     }
 

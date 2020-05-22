@@ -1,7 +1,7 @@
 package net.greet.input;
 
-import net.greet.enumerators.CommandType;
-import net.greet.enumerators.LanguageType;
+import net.greet.enums.Command;
+import net.greet.enums.Language;
 
 public class Input {
 
@@ -11,7 +11,7 @@ public class Input {
         this.arguments = argumentString.split(" ");
     }
 
-    public CommandType getCommandType() {
+    public Command getCommandType() {
         return getCommandType(this.arguments[0]);
     }
 
@@ -22,30 +22,31 @@ public class Input {
         return null;
     }
 
-    public LanguageType getEnteredLanguage() {
+    public Language getEnteredLanguage() {
         if (this.arguments.length > 2){
             return getLanguageType(arguments[2]);
         }
-        return LanguageType.ENGLISH;
+        return Language.ENGLISH;
     }
 
-    private LanguageType getLanguageType(String arg){
-        for (LanguageType type : LanguageType.values()) {
+    private Language getLanguageType( String arg){
+        for (Language type : Language.values()) {
             if (type.name().equals(arg.toUpperCase())) {
                 return type;
             }
         }
-        return LanguageType.ENGLISH;
+        return Language.ENGLISH;
     }
 
-    private CommandType getCommandType(String arg){
-        for (CommandType type : CommandType.values()) {
+    private Command getCommandType( String arg){
+        for (Command type : Command.values()) {
             if (type.name().equals(arg.toUpperCase())) {
                 return type;
             }
         }
-        return CommandType.HELP;
+        return Command.HELP;
     }
+
     protected int getArgumentsLength(){
         return this.arguments.length;
     }

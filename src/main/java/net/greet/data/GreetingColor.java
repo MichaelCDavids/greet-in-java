@@ -1,6 +1,6 @@
-package net.greet.theme;
+package net.greet.data;
 
-public class ConsoleColors {
+public class GreetingColor {
     // Reset
     public static final String RESET = "\033[0m";  // Text Reset
 

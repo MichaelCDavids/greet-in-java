@@ -1,15 +1,14 @@
 package net.greet.commands;
 
-import net.greet.database.DatabaseService;
+import net.greet.database.Service;
 import net.greet.input.Input;
-import net.greet.interfaces.CommandInterface;
-import net.greet.theme.ConsoleColors;
+import net.greet.Command;
 
-public class Greeted implements CommandInterface {
+public class Greeted implements Command {
 
-    private DatabaseService db;
+    private Service db;
 
-    public Greeted(DatabaseService db){
+    public Greeted( Service db){
         this.db = db;
     }
 

@@ -1,6 +1,6 @@
-package net.greet.interfaces;
+package net.greet;
 
-public interface DatabaseInterface {
+public interface AppFactory {
     boolean greetUser(String userName);
     int userGreeted(String userName);
     boolean clearUser(String userName);

@@ -1,10 +1,10 @@
-package net.greet.utilities;
+package net.greet;
 
-import net.greet.enumerators.LanguageType;
+import net.greet.enums.Language;
 
 public class Greeter{
 
-    public String greet(String userName, LanguageType languageType){
+    public String greet(String userName, Language languageType){
         switch (languageType){
             case ENGLISH:
                 return "Hello, "+userName;

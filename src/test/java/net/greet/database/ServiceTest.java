@@ -1,6 +1,5 @@
 package net.greet.database;
 
-import net.greet.utilities.Greeter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

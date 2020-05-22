@@ -1,17 +1,17 @@
 package net.greet.database;
 
-import net.greet.interfaces.DatabaseInterface;
-import net.greet.theme.ConsoleColors;
+import net.greet.AppFactory;
+import net.greet.data.GreetingColor;
 
 import java.sql.*;
 import java.util.HashMap;
 import java.util.Map;
 
-public class DatabaseService implements DatabaseInterface {
+public class Service implements AppFactory {
 
-    SQLQueries queries;
+    Queries queries;
 
-    public DatabaseService( SQLQueries queries ) {
+    public Service( Queries queries ) {
         this.queries = queries;
     }
 
@@ -86,7 +86,7 @@ public class DatabaseService implements DatabaseInterface {
             Map<String, Integer> userMap = new HashMap<>();
             System.out.println("\nList of greeted users:\n");
             while(set.next()){
-                System.out.println(ConsoleColors.PURPLE_BOLD+set.getString(2)+" was greeted "+set.getInt(3)+" time(s)");
+                System.out.println(GreetingColor.PURPLE_BOLD+set.getString(2)+" was greeted "+set.getInt(3)+" time(s)");
             }
             return "";
 

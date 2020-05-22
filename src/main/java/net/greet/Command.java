@@ -1,7 +1,7 @@
-package net.greet.interfaces;
+package net.greet;
 
 import net.greet.input.Input;
 
-public interface CommandInterface {
+public interface Command {
     String executeCommand( Input input );
 }

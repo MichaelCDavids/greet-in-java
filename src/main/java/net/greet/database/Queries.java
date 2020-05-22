@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class SQLQueries {
+public class Queries {
 
     private Connection connection;
 
@@ -16,7 +16,7 @@ public class SQLQueries {
     private PreparedStatement clearUser;
     private PreparedStatement clearAllUsers;
 
-    public SQLQueries(Connection dbConnection){
+    public Queries( Connection dbConnection){
         this.connection = dbConnection;
     }
 

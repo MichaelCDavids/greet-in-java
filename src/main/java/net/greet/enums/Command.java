@@ -1,6 +1,6 @@
-package net.greet.enumerators;
+package net.greet.enums;
 
-public enum CommandType {
+public enum Command {
     GREET,
     GREETED,
     COUNTER,
