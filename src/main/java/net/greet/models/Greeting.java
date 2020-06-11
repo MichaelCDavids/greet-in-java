@@ -15,4 +15,5 @@ public class Greeting {
     public boolean showPrompt(){
         return this.showPrompt;
     }
+
 }

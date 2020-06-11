@@ -8,7 +8,7 @@ public class Help implements Command {
 
     public String executeCommand( Input input ) {
         return "==================================================================" +
-                "\nEnter one of these valid commands below:\n" +
+                "\nEnter one of these valid commands below:" +
                 GreetingColor.GREEN_BOLD_BRIGHT +"\n\tgreet [name] [language] "+ GreetingColor.RESET+"- Greets a user in preferred language" +
                 GreetingColor.GREEN_BOLD_BRIGHT +"\n\tgreeted "+ GreetingColor.RESET+"- Displays a list of all users that were greeted and number of they have been greeted" +
                 GreetingColor.GREEN_BOLD_BRIGHT +"\n\tgreeted [name] "+ GreetingColor.RESET+"- number of times a user was greeted" +

@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
-Test set: net.greet.utilities.GreeterTest
+Test set: net.greet.database.ServiceTest
 -------------------------------------------------------------------------------
-Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.017 s - in net.greet.utilities.GreeterTest
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.043 s - in net.greet.database.ServiceTest

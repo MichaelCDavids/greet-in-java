@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="net.greet.input.InputTest" time="0" tests="4" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="net.greet.ProcessorTest" time="0.013" tests="3" errors="0" skipped="0" failures="1">
   <properties>
     <property name="sun.desktop" value="gnome"/>
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
@@ -58,8 +58,31 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="52.0"/>
   </properties>
-  <testcase name="testGetEnteredName" classname="net.greet.input.InputTest" time="0"/>
-  <testcase name="testInputConstructor" classname="net.greet.input.InputTest" time="0"/>
-  <testcase name="testGetCommandType" classname="net.greet.input.InputTest" time="0"/>
-  <testcase name="testGetEnteredLanguageType" classname="net.greet.input.InputTest" time="0"/>
+  <testcase name="testProcessInputMethodInvalidCommand" classname="net.greet.ProcessorTest" time="0.008">
+    <failure message="expected: &lt;==================================================================&#10;Enter one of these valid commands below:&#10;&amp;#27;[1;92m&#10;	greet [name] [language] &amp;#27;[0m- Greets a user in preferred language&amp;#27;[1;92m&#10;	greeted &amp;#27;[0m- Displays a list of all users that were greeted and number of they have been greeted&amp;#27;[1;92m&#10;	greeted [name] &amp;#27;[0m- number of times a user was greeted&amp;#27;[1;92m&#10;	counter &amp;#27;[0m- Displays the total number of users that were greeted&amp;#27;[1;92m&#10;	clear [name] &amp;#27;[0m- clears user from database&amp;#27;[1;92m&#10;	clear &amp;#27;[0m- removes all users from database&amp;#27;[1;92m&#10;	help &amp;#27;[0m- shows list of available commands&#10;================================================================&gt; but was: &lt;==================================================================&#10;Enter one of these valid commands below:&amp;#27;[1;92m&#10;	greet [name] [language] &amp;#27;[0m- Greets a user in preferred language&amp;#27;[1;92m&#10;	greeted &amp;#27;[0m- Displays a list of all users that were greeted and number of they have been greeted&amp;#27;[1;92m&#10;	greeted [name] &amp;#27;[0m- number of times a user was greeted&amp;#27;[1;92m&#10;	counter &amp;#27;[0m- Displays the total number of users that were greeted&amp;#27;[1;92m&#10;	clear [name] &amp;#27;[0m- clears user from database&amp;#27;[1;92m&#10;	clear &amp;#27;[0m- removes all users from database&amp;#27;[1;92m&#10;	help &amp;#27;[0m- shows list of available commands&#10;================================================================&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: 
+expected: <==================================================================
+Enter one of these valid commands below:
+&amp#27;[1;92m
+	greet [name] [language] &amp#27;[0m- Greets a user in preferred language&amp#27;[1;92m
+	greeted &amp#27;[0m- Displays a list of all users that were greeted and number of they have been greeted&amp#27;[1;92m
+	greeted [name] &amp#27;[0m- number of times a user was greeted&amp#27;[1;92m
+	counter &amp#27;[0m- Displays the total number of users that were greeted&amp#27;[1;92m
+	clear [name] &amp#27;[0m- clears user from database&amp#27;[1;92m
+	clear &amp#27;[0m- removes all users from database&amp#27;[1;92m
+	help &amp#27;[0m- shows list of available commands
+================================================================> but was: <==================================================================
+Enter one of these valid commands below:&amp#27;[1;92m
+	greet [name] [language] &amp#27;[0m- Greets a user in preferred language&amp#27;[1;92m
+	greeted &amp#27;[0m- Displays a list of all users that were greeted and number of they have been greeted&amp#27;[1;92m
+	greeted [name] &amp#27;[0m- number of times a user was greeted&amp#27;[1;92m
+	counter &amp#27;[0m- Displays the total number of users that were greeted&amp#27;[1;92m
+	clear [name] &amp#27;[0m- clears user from database&amp#27;[1;92m
+	clear &amp#27;[0m- removes all users from database&amp#27;[1;92m
+	help &amp#27;[0m- shows list of available commands
+================================================================>
+	at net.greet.ProcessorTest.testProcessInputMethodInvalidCommand(ProcessorTest.java:56)
+]]></failure>
+  </testcase>
+  <testcase name="testProcessorConstructor" classname="net.greet.ProcessorTest" time="0"/>
+  <testcase name="testProcessInputMethod" classname="net.greet.ProcessorTest" time="0.004"/>
 </testsuite>

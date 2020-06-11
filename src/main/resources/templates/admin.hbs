@@ -1,0 +1,70 @@
+{{#partial "body"}}
+    <div class="container center">
+        <div class="row">
+            <div class="col l12 ">
+                <div class="card white">
+                    <div class="card-content black-text center">
+                        <span class="card-title">List of all users greeted</span>
+                        <br/>
+                        {{#if err}}
+                            <div class="row">
+                                <div class="col l12">
+                                    <h4>{{err}}</h4>
+                                </div>
+                            </div>
+                        {{/if}}
+                        <table class="centered responsive-table highlight striped bordered">
+                            <thead>
+                            <tr>
+                                <th>First Name</th>
+                                <th>Times Greeted</th>
+                                <th>Actions</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            {{#each greeted}}
+                                <tr>
+                                    <td>{{name}}</td>
+                                    <td>{{counter}}</td>
+                                    <td>
+                                        <form action="/clear/{{name}}" method="post">
+                                            <button class="btn waves-effect waves-light" type="submit">clear</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            {{/each}}
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <br/>
+                    <div class="card-action">
+                        <div class="row">
+                            <div class="col l6">
+                                <form action="/" method="get">
+                                    <button type="submit" class="btn-floating btn-large waves-effect waves-light red"><i
+                                            class="material-icons">arrow_back</i></button>
+                                </form>
+                            </div>
+                            <div class="col l6">
+                                <form action="/" method="post">
+                                    <button type="submit" class="btn-floating btn-large waves-effect waves-light red"><i
+                                            class="material-icons">delete_outline</i></button>
+                                </form>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+        </div>
+    </div>
+{{/partial}}
+
+{{> layout.hbs}}
+

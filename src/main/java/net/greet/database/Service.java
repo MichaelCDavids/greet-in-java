@@ -4,6 +4,7 @@ import net.greet.AppFactory;
 import net.greet.data.GreetingColor;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -79,21 +80,25 @@ public class Service implements AppFactory {
     }
 
     @Override
-    public String usersGreeted() {
+    public ArrayList<Map<String,String>> usersGreeted() {
+        ArrayList<Map<String,String>> listOfUsers =  new ArrayList<>();
         try {
             PreparedStatement p = queries.getTotalCount();
             ResultSet set = p.executeQuery();
-            Map<String, Integer> userMap = new HashMap<>();
             System.out.println("\nList of greeted users:\n");
             while(set.next()){
+                Map<String, String> userMap = new HashMap<>();
+                userMap.put("name",set.getString(2));
+                userMap.put("counter",""+set.getInt(3));
+                listOfUsers.add(userMap);
                 System.out.println(GreetingColor.PURPLE_BOLD+set.getString(2)+" was greeted "+set.getInt(3)+" time(s)");
             }
-            return "";
+            return listOfUsers;
 
         }catch (SQLException e){
             e.printStackTrace();
         }
-        return "";
+        return listOfUsers;
     }
 
     @Override

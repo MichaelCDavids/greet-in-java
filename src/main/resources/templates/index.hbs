@@ -1,0 +1,45 @@
+{{#partial "body"}}
+    <div class="container center">
+        <div class="row">
+            <div class="col s12 l6 offset-l3">
+                <div class="card">
+                    <div class="card-content grey-text">
+                        <h1 class="card-title">Greetings v1.0.0</h1>
+                        <a href="/greeted" class="btn btn-floating btn-large">{{counter}}</a>
+                        <br/>
+                        <br/>
+                        <form action="/greet" method="post" class="white--text">
+                            <input id="name" name="name" class=" col l6 offset-l3 grey lighten-3 center" type="text" />
+                            <div class="row">
+                                <div class="col l4">
+                                    <p>
+                                        <input class="with-gap" name="language" type="radio" id="english"  value="english"/>
+                                        <label for="english">English</label>
+                                    </p>
+                                </div>
+                                <div class="col l4">
+                                    <p>
+                                        <input class="with-gap" name="language" type="radio" id="french" value="french" />
+                                        <label for="french">French</label>
+                                    </p>
+                                </div>
+                                <div class="col l4">
+                                    <p>
+                                        <input class="with-gap" name="language" type="radio" id="afrikaans" value="afrikaans"/>
+                                        <label for="afrikaans">Afrikaans</label>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <button class="btn waves-effect waves-light pulse" type="submit" name="greet">Greet
+                                <i class="material-icons right">emoji_people</i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{{/partial}}
+
+{{> layout.hbs}}

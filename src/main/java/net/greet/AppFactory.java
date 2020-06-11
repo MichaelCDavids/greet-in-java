@@ -1,10 +1,13 @@
 package net.greet;
 
+import java.util.ArrayList;
+import java.util.Map;
+
 public interface AppFactory {
     boolean greetUser(String userName);
     int userGreeted(String userName);
     boolean clearUser(String userName);
     int greetCount();
     boolean clearAll();
-    String usersGreeted();
+    ArrayList<Map<String,String>> usersGreeted();
 }

@@ -14,7 +14,9 @@ public class Processor {
     }
 
     public Greeting processInput( String input){
+
         Input userInput = new Input(input);
+
         if (commands.getCommand(userInput.getCommandType().name().toLowerCase()) instanceof Command){
             if (userInput.getCommandType().name().toLowerCase().equals("exit")){
                 return new Greeting(commands.getCommand(userInput.getCommandType().name().toLowerCase()).executeCommand(userInput),false);

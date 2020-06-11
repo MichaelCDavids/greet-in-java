@@ -14,7 +14,10 @@ public class Greeted implements Command {
 
     @Override
     public String executeCommand(Input input) {
-        if (input.getEnteredName() == null) return db.usersGreeted();
+        if (input.getEnteredName() == null) {
+            db.usersGreeted();
+            return "---------";
+        }
         return input.getEnteredName()+" has been greeted "+db.userGreeted(input.getEnteredName())+" times";
     }
 }

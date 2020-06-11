@@ -29,7 +29,7 @@ public class Input {
         return Language.ENGLISH;
     }
 
-    private Language getLanguageType( String arg){
+    public static Language getLanguageType( String arg){
         for (Language type : Language.values()) {
             if (type.name().equals(arg.toUpperCase())) {
                 return type;
