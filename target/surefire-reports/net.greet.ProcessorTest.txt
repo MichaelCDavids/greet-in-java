@@ -1,28 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: net.greet.ProcessorTest
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.013 s <<< FAILURE! - in net.greet.ProcessorTest
-testProcessInputMethodInvalidCommand  Time elapsed: 0.008 s  <<< FAILURE!
-org.opentest4j.AssertionFailedError: 
-expected: <==================================================================
-Enter one of these valid commands below:
-[1;92m
-	greet [name] [language] [0m- Greets a user in preferred language[1;92m
-	greeted [0m- Displays a list of all users that were greeted and number of they have been greeted[1;92m
-	greeted [name] [0m- number of times a user was greeted[1;92m
-	counter [0m- Displays the total number of users that were greeted[1;92m
-	clear [name] [0m- clears user from database[1;92m
-	clear [0m- removes all users from database[1;92m
-	help [0m- shows list of available commands
-================================================================> but was: <==================================================================
-Enter one of these valid commands below:[1;92m
-	greet [name] [language] [0m- Greets a user in preferred language[1;92m
-	greeted [0m- Displays a list of all users that were greeted and number of they have been greeted[1;92m
-	greeted [name] [0m- number of times a user was greeted[1;92m
-	counter [0m- Displays the total number of users that were greeted[1;92m
-	clear [name] [0m- clears user from database[1;92m
-	clear [0m- removes all users from database[1;92m
-	help [0m- shows list of available commands
-================================================================>
-	at net.greet.ProcessorTest.testProcessInputMethodInvalidCommand(ProcessorTest.java:56)
-
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s - in net.greet.ProcessorTest
