@@ -40,7 +40,7 @@ public class WebApp {
             post("/greet", (rq, rs) -> {
                 Map<String, String> data = new HashMap<>();
 
-                String name = rq.queryParams("name");
+                String name = rq.queryParams("name").replaceAll("[^a-zA-Z]", "");
                 String language = rq.queryParams("language");
 
                 String message = "";

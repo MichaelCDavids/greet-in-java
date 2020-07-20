@@ -17,7 +17,8 @@ public class Input {
 
     public String getEnteredName() {
         if (this.arguments.length >= 2){
-            return arguments[1].substring(0,1).toUpperCase()+arguments[1].substring(1).toLowerCase();
+            String name = arguments[1].replaceAll("[^a-zA-Z]", "");
+            return name.substring(0,1).toUpperCase()+name.substring(1).toLowerCase();
         }
         return null;
     }
