@@ -1,14 +1,8 @@
 net/greet/input/InputTest.class
 net/greet/MainTest.class
-net/greet/commands/HelpTest.class
 net/greet/CommandsTest.class
-net/greet/commands/ExitTest.class
+net/greet/database/QueriesTest.class
 net/greet/ProcessorTest.class
-net/greet/ClearTest.class
-net/greet/commands/CounterTest.class
 net/greet/database/ServiceTest.class
 net/greet/GreeterTest.class
-net/greet/commands/GreetTest.class
-net/greet/commands/GreetedTest.class
-net/greet/database/QueriesTest.class
 net/greet/models/GreetingTest.class

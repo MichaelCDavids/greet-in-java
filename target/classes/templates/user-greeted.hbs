@@ -4,7 +4,7 @@
             <div class="col l12 ">
                 <div class="card white">
                     <div class="card-content black-text center">
-                        <span class="card-title">List of all users greeted</span>
+                        <span class="card-title">Greet information for {{name}}</span>
                         <br/>
                         {{#if err}}
                             <div class="row">
@@ -17,22 +17,22 @@
                             <thead>
                             <tr>
                                 <th>First Name</th>
+                                <th>Times Greeted</th>
                             </tr>
                             </thead>
 
                             <tbody>
-                            {{#each greeted}}
                                 <tr>
-                                    <td><a href="/greeted/{{name}}">{{name}}</a></td>
+                                    <td>{{name}}</td>
+                                    <td>{{counter}}</td>
                                 </tr>
-                            {{/each}}
 
                             </tbody>
                         </table>
                     </div>
                     <br/>
                     <div class="card-action">
-                        <a href="/">Back</a>
+                        <a href="/greeted">Back</a>
                     </div>
                 </div>
             </div>

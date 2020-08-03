@@ -1,0 +1,45 @@
+2020-08-03 20:33:09 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found; SQL statement:
+DELETE FROM USERS [42102-199]
+2020-08-03 20:33:09 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found; SQL statement:
+DELETE FROM USERS [42102-199]
+2020-08-03 20:33:09 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found; SQL statement:
+DELETE FROM USERS [42102-199]
+2020-08-03 20:33:09 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found; SQL statement:
+DELETE FROM USERS [42102-199]
+2020-08-03 20:33:09 jdbc[7]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found; SQL statement:
+DELETE FROM USERS [42102-199]
+2020-08-03 20:33:09 jdbc[8]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found; SQL statement:
+DELETE FROM USERS [42102-199]
+2020-08-03 20:33:09 jdbc[9]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found; SQL statement:
+UPDATE USERS SET COUNT = ? WHERE NAME = ? [42102-199]
+2020-08-03 20:33:09 jdbc[10]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found; SQL statement:
+DELETE FROM USERS [42102-199]
+2020-08-03 20:33:09 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found; SQL statement:
+SELECT 1 FROM USERS WHERE NAME = ? [42102-199]
+2020-08-03 20:33:09 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found; SQL statement:
+SELECT * FROM USERS [42102-199]
+2020-08-03 20:33:09 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found; SQL statement:
+DELETE FROM USERS WHERE NAME = ? [42102-199]
+2020-08-03 20:33:09 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found; SQL statement:
+INSERT INTO USERS (NAME,COUNT) VALUES (?,?) [42102-199]
+2020-08-03 20:33:09 jdbc[16]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found; SQL statement:
+SELECT COUNT FROM USERS WHERE NAME = ? [42102-199]
+2020-08-03 20:33:09 jdbc[19]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found; SQL statement:
+SELECT 1 FROM USERS WHERE NAME = ? [42102-199]
+2020-08-03 20:33:09 jdbc[22]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found; SQL statement:
+SELECT 1 FROM USERS WHERE NAME = ? [42102-199]
