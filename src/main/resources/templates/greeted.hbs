@@ -17,15 +17,13 @@
                             <thead>
                             <tr>
                                 <th>First Name</th>
-                                <th>Times Greeted</th>
                             </tr>
                             </thead>
 
                             <tbody>
                             {{#each greeted}}
                                 <tr>
-                                    <td>{{name}}</td>
-                                    <td>{{counter}}</td>
+                                    <td><a href="/greeted/{{name}}">{{name}}</a></td>
                                 </tr>
                             {{/each}}
 
