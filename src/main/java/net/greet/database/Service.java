@@ -1,7 +1,6 @@
 package net.greet.database;
 
 import net.greet.AppFactory;
-import net.greet.data.GreetingColor;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -21,11 +20,7 @@ public class Service implements AppFactory {
         if (userExists(name)){
             return updateGreetCount(name);
         }else if(!userExists(name)){
-            if(name!= "" | name.length() < 3){
-                return createUser(name);
-            }
-            return false;
-
+            return createUser(name);
         } else {
             return false;
         }
@@ -85,13 +80,11 @@ public class Service implements AppFactory {
         try {
             PreparedStatement p = queries.getTotalCount();
             ResultSet set = p.executeQuery();
-            System.out.println("\nList of greeted users:\n");
             while(set.next()){
                 Map<String, String> userMap = new HashMap<>();
                 userMap.put("name",set.getString(2));
                 userMap.put("counter",""+set.getInt(3));
                 listOfUsers.add(userMap);
-                System.out.println(GreetingColor.PURPLE_BOLD+set.getString(2)+" was greeted "+set.getInt(3)+" time(s)");
             }
             return listOfUsers;
 
@@ -99,6 +92,21 @@ public class Service implements AppFactory {
             e.printStackTrace();
         }
         return listOfUsers;
+    }
+
+    @Override
+    public int userGreetCount(String name) {
+        try {
+            PreparedStatement p = queries.getUserGreetedTotal();
+            p.setString(1,name);
+            ResultSet set = p.executeQuery();
+            while (set.next()){
+                return set.getInt("COUNT");
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return 0;
     }
 
     @Override
@@ -144,7 +152,7 @@ public class Service implements AppFactory {
 
         try{
             PreparedStatement p = queries.getUserGreetedTotal();
-            p.setString(1, name);
+            p.setString(1,name);
             ResultSet set =  p.executeQuery();
             while (set.next()){
                 int userGreetCounter = set.getInt("COUNT") + 1;

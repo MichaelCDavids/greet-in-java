@@ -7,33 +7,37 @@ import org.apache.log4j.BasicConfigurator;
 import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import static java.sql.DriverManager.getConnection;
 import static spark.Spark.*;
 
 public class WebApp {
     public static void main(String[] args) {
-        try{
+        try {
             BasicConfigurator.configure();
+            staticFiles.location("/public");
+            port(getHerokuAssignedPort());
+            Connection db = getDatabaseConnection("jdbc:postgresql://localhost/greeter?user=mike&password=mike123");
+            AppFactory factory = new Service(new Queries(db));
+            Greeter greeter = new Greeter();
 
-            Connection db = getConnection("jdbc:h2:file:./target/greetings_app_db", "sa", "");
-            Service factory = new Service(new Queries(db));
-            Greeter greeter =  new Greeter();
-
-            get("/",  (rq, rs) -> {
+            get("/", (rq, rs) -> {
                 Map<String, String> data = new HashMap<>();
                 data.put("counter", ""+factory.greetCount());
                 return new ModelAndView(data, "index.hbs");
             }, new HandlebarsTemplateEngine());
 
-            post("/",  (rq, rs) -> {
+            post("/", (rq, rs) -> {
                 factory.clearAll();
                 Map<String, String> data = new HashMap<>();
-                data.put("counter", ""+factory.greetCount());
+                data.put("counter", "" + factory.greetCount());
                 return new ModelAndView(data, "index.hbs");
             }, new HandlebarsTemplateEngine());
 
@@ -50,42 +54,83 @@ public class WebApp {
                 } else {
                     if (language == null) {
                         data.put("err", "please select a language");
-                    }else{
-                        if(factory.greetUser(name)){
+                    } else {
+                        if (factory.greetUser(name)) {
                             message = greeter.greet(name, Input.getLanguageType(language));
                             data.put("message", message);
                         }
                     }
                 }
-                data.put("counter", ""+factory.greetCount());
+                data.put("counter", "" + factory.greetCount());
                 return new ModelAndView(data, "greet.hbs");
 
             }, new HandlebarsTemplateEngine());
 
             get("/greeted", (rq, rs) -> {
-                Map<String, ArrayList<Map<String,String>>> data = new HashMap<>();
-                data.put("greeted",factory.usersGreeted());
+                Map<String, ArrayList<Map<String, String>>> data = new HashMap<>();
+                data.put("greeted", factory.usersGreeted());
                 System.out.println(data.toString());
                 return new ModelAndView(data, "greeted.hbs");
             }, new HandlebarsTemplateEngine());
 
+            get("/greeted/:username",(rq, rs) ->{
+                String name = rq.params("username");
+
+                Map<String, Object> data = new HashMap<>();
+
+                data.put("name",name);
+                data.put("counter",factory.userGreetCount(name));
+                return new ModelAndView(data,"user-greeted.hbs");
+            },new HandlebarsTemplateEngine());
             get("/admin", (rq, rs) -> {
-                Map<String, ArrayList<Map<String,String>>> data = new HashMap<>();
-                data.put("greeted",factory.usersGreeted());
+                Map<String, ArrayList<Map<String, String>>> data = new HashMap<>();
+                data.put("greeted", factory.usersGreeted());
                 System.out.println(data.toString());
                 return new ModelAndView(data, "admin.hbs");
             }, new HandlebarsTemplateEngine());
 
-            post("/clear/:name",(rq,rs) -> {
-                Map<String, ArrayList<Map<String,String>>> data = new HashMap<>();
+            post("/clear/:name", (rq, rs) -> {
+                Map<String, ArrayList<Map<String, String>>> data = new HashMap<>();
                 factory.clearUser(rq.params("name"));
-                data.put("greeted",factory.usersGreeted());
+                data.put("greeted", factory.usersGreeted());
                 System.out.println(data.toString());
                 return new ModelAndView(data, "greeted.hbs");
-            },new HandlebarsTemplateEngine());
+            }, new HandlebarsTemplateEngine());
 
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    static int getHerokuAssignedPort() {
+        ProcessBuilder processBuilder = new ProcessBuilder();
+        if (processBuilder.environment().get("PORT") != null) {
+            return Integer.parseInt(processBuilder.environment().get("PORT"));
+        }
+        return 5000;
+    }
+
+    static Connection getDatabaseConnection(String defualtJdbcUrl) throws URISyntaxException, SQLException {
+        ProcessBuilder processBuilder = new ProcessBuilder();
+        String database_url = processBuilder.environment().get("DATABASE_URL");
+        if (database_url != null) {
+
+            URI uri = new URI(database_url);
+            String[] hostParts = uri.getUserInfo().split(":");
+            String username = hostParts[0];
+            String password = hostParts[1];
+            String host = uri.getHost();
+
+            int port = uri.getPort();
+
+            String path = uri.getPath();
+            String url = String.format("jdbc:postgresql://%s:%s%s", host, port, path);
+
+            return DriverManager.getConnection(url, username, password);
+
+        }
+
+        return DriverManager.getConnection(defualtJdbcUrl);
+
     }
 }

@@ -16,7 +16,7 @@ public class Queries {
     private PreparedStatement clearUser;
     private PreparedStatement clearAllUsers;
 
-    public Queries( Connection dbConnection){
+    public Queries(Connection dbConnection) {
         this.connection = dbConnection;
     }
 
@@ -24,17 +24,17 @@ public class Queries {
         try {
             final String GET_USER_SQL = "SELECT 1 FROM USERS WHERE NAME = ?";
             this.findUser = this.connection.prepareStatement(GET_USER_SQL);
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return findUser;
     }
 
     PreparedStatement getCreateUser() {
-        try{
+        try {
             final String CREATE_USER_SQL = "INSERT INTO USERS (NAME,COUNT) VALUES (?,?)";
             this.createUser = this.connection.prepareStatement(CREATE_USER_SQL);
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return createUser;
@@ -43,8 +43,8 @@ public class Queries {
     PreparedStatement getUpdateCounter() {
         try {
             final String UPDATE_COUNTER_SQL = "UPDATE USERS SET COUNT = ? WHERE NAME = ?";
-            this.updateCounter =  this.connection.prepareStatement(UPDATE_COUNTER_SQL);
-        }catch (SQLException e){
+            this.updateCounter = this.connection.prepareStatement(UPDATE_COUNTER_SQL);
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return updateCounter;
@@ -53,9 +53,8 @@ public class Queries {
     PreparedStatement getTotalCount() {
         try {
             final String GET_USER_TOTAL_SQL = "SELECT * FROM USERS";
-
             this.totalCount = this.connection.prepareStatement(GET_USER_TOTAL_SQL);
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return totalCount;
@@ -65,7 +64,7 @@ public class Queries {
         try {
             final String CLEAR_USER_SQL = "DELETE FROM USERS WHERE NAME = ?";
             this.clearUser = this.connection.prepareStatement(CLEAR_USER_SQL);
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return clearUser;
@@ -74,18 +73,18 @@ public class Queries {
     PreparedStatement getClearAllUsers() {
         try {
             final String CLEAR_ALL_USERS_SQL = "DELETE FROM USERS";
-            this.clearAllUsers =  this.connection.prepareStatement(CLEAR_ALL_USERS_SQL);
-        }catch (SQLException e){
+            this.clearAllUsers = this.connection.prepareStatement(CLEAR_ALL_USERS_SQL);
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return clearAllUsers;
     }
 
     PreparedStatement getUserGreetedTotal() {
-        try{
+        try {
             final String GET_USER_GREETED_COUNT = "SELECT COUNT FROM USERS WHERE NAME = ?";
             this.userGreetedTotal = this.connection.prepareStatement(GET_USER_GREETED_COUNT);
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return userGreetedTotal;

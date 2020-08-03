@@ -10,4 +10,5 @@ public interface AppFactory {
     int greetCount();
     boolean clearAll();
     ArrayList<Map<String,String>> usersGreeted();
+    int userGreetCount(String name);
 }
