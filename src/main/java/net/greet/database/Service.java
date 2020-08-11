@@ -80,11 +80,13 @@ public class Service implements AppFactory {
         try {
             PreparedStatement p = queries.getTotalCount();
             ResultSet set = p.executeQuery();
+            System.out.println("List of users greeted\n---------------------");
             while(set.next()){
                 Map<String, String> userMap = new HashMap<>();
                 userMap.put("name",set.getString(2));
                 userMap.put("counter",""+set.getInt(3));
                 listOfUsers.add(userMap);
+                System.out.println(set.getString(2));
             }
             return listOfUsers;
 

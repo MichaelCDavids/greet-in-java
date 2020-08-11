@@ -1,0 +1,45 @@
+{{#partial "body"}}
+    <div class="container center">
+        <div class="row">
+            <div class="col l12 ">
+                <div class="card white">
+                    <div class="card-content black-text center">
+                        <span class="card-title">Greet information for {{name}}</span>
+                        <br/>
+                        {{#if err}}
+                            <div class="row">
+                                <div class="col l12">
+                                    <h4>{{err}}</h4>
+                                </div>
+                            </div>
+                        {{/if}}
+                        <table class="centered responsive-table highlight striped bordered">
+                            <thead>
+                            <tr>
+                                <th>First Name</th>
+                                <th>Times Greeted</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            <tr>
+                                <td>{{name}}</td>
+                                <td>{{counter}}</td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <br/>
+                    <div class="card-action">
+                        <a href="/greeted">Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+        </div>
+    </div>
+{{/partial}}
+
+{{> layout.hbs}}

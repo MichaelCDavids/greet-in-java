@@ -16,7 +16,7 @@ public class Greeted implements Command {
     public String executeCommand(Input input) {
         if (input.getEnteredName() == null) {
             db.usersGreeted();
-            return "---------";
+            return "";
         }
         return input.getEnteredName()+" has been greeted "+db.userGreeted(input.getEnteredName())+" times";
     }

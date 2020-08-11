@@ -24,13 +24,13 @@ public class WebApp {
             BasicConfigurator.configure();
             staticFiles.location("/public");
             port(getHerokuAssignedPort());
-            Connection db = getDatabaseConnection("jdbc:postgresql://localhost/greeter?user=mike&password=mike123");
+            Connection db = getDatabaseConnection("postgres://zwewdnvxoeelmi:3309911165c373cd151280f77a161d3f39c8a1ed4b7d99de454b11fef0231a80@ec2-107-22-7-9.compute-1.amazonaws.com:5432/d4h9nj3e3jnld2\n");
             AppFactory factory = new Service(new Queries(db));
             Greeter greeter = new Greeter();
 
             get("/", (rq, rs) -> {
                 Map<String, String> data = new HashMap<>();
-                data.put("counter", ""+factory.greetCount());
+                data.put("counter", "" + factory.greetCount());
                 return new ModelAndView(data, "index.hbs");
             }, new HandlebarsTemplateEngine());
 
@@ -73,15 +73,16 @@ public class WebApp {
                 return new ModelAndView(data, "greeted.hbs");
             }, new HandlebarsTemplateEngine());
 
-            get("/greeted/:username",(rq, rs) ->{
+            get("/greeted/:username", (rq, rs) -> {
                 String name = rq.params("username");
 
                 Map<String, Object> data = new HashMap<>();
 
-                data.put("name",name);
-                data.put("counter",factory.userGreetCount(name));
-                return new ModelAndView(data,"user-greeted.hbs");
-            },new HandlebarsTemplateEngine());
+                data.put("name", name);
+                data.put("counter", factory.userGreetCount(name));
+                return new ModelAndView(data, "user-greeted.hbs");
+            }, new HandlebarsTemplateEngine());
+
             get("/admin", (rq, rs) -> {
                 Map<String, ArrayList<Map<String, String>>> data = new HashMap<>();
                 data.put("greeted", factory.usersGreeted());
@@ -127,10 +128,7 @@ public class WebApp {
             String url = String.format("jdbc:postgresql://%s:%s%s", host, port, path);
 
             return DriverManager.getConnection(url, username, password);
-
         }
-
         return DriverManager.getConnection(defualtJdbcUrl);
-
     }
 }

@@ -19,7 +19,7 @@ public class Greet implements Command {
 
     public String executeCommand(Input input) {
         if (input.getEnteredName() == null) {
-            return GreetingColor.RED_BRIGHT+ "To greet a user enter the command "+ GreetingColor.GREEN+"$ greet [name] [language]"+ GreetingColor.RESET;
+            return GreetingColor.RED_BRIGHT+ "For a personalized greeting enter the command "+ GreetingColor.GREEN+"$ greet [name] [language]"+ GreetingColor.RESET;
         }
         db.greetUser(input.getEnteredName());
         return greeterObject.greet(input.getEnteredName(), input.getEnteredLanguage());
